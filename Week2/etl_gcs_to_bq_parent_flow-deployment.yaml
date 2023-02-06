@@ -1,0 +1,62 @@
+###
+### A complete description of a Prefect Deployment for flow 'etl-gcs-to-bq-parent-flow'
+###
+name: hw_gcs_to_bq
+description: null
+version: 735c03d05abc9bb7a402d81f59c2e826
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: default-agent-pool
+tags: []
+parameters: {}
+schedule: null
+is_schedule_active: true
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: etl-gcs-to-bq-parent-flow
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: 2901cf7a-5d57-49a3-a5ca-4ca3b5e7f233
+  _block_document_name: anonymous-9e4cab9a-2757-4f54-aed8-806b223b4b65
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage: null
+path: /home/cronos/Workspace/Python/DEZoomcamp2023/Week2
+entrypoint: homework/parametrized_etl_gcs_to_bq.py:etl_gcs_to_bq_parent_flow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    months:
+      title: months
+      default:
+      - 1
+      - 2
+      position: 0
+      type: array
+      items:
+        type: integer
+    year:
+      title: year
+      default: 2021
+      position: 1
+      type: integer
+    color:
+      title: color
+      default: yellow
+      position: 2
+      type: string
+  required: null
+  definitions: null
+timestamp: '2023-02-06T01:35:04.984553+00:00'

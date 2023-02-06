@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "Data Engineering Zoomcamp 2023 - Week 2"
+version = "0.1.0"
+description = ""
+authors = ["tbukic <contact@tome.8shield.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^1.5.2"
+prefect = "^2.7.7"
+prefect-sqlalchemy = "^0.2.2"
+prefect-gcp = {extras = ["cloud-storage"], version = "^0.2.3"}
+protobuf = "^4.21.12"
+pyarrow = "^10.0.1"
+pandas_gbq = "^0.18.1"
+psycopg2-binary = "^2.9.5"
+sqlalchemy = "^1.4.46"
+sqlalchemy-utils = "^0.39.0"
+prefect-github = "^0.1.5"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.18.1"
+
+[tool.poe.tasks]
+
+    [tool.poe.tasks.export-requirements]
+    help = "Exports requirements.txt from poetry"
+    shell  = "poetry export -f requirements.txt --output requirements.txt --without-hashes"
+
+    [tool.poe.tasks.docker-requirements]
+    help = "Exports docker-requirements.txt - which don't contain prefect."
+    shell  = "sed /^prefect==/d requirements.txt > docker-requirements.txt"
+    deps = ["export-requirements"]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
