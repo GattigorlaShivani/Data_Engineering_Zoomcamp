@@ -1,0 +1,25 @@
+dbt_project_github:
+  outputs:
+    dev:
+      type: bigquery
+      dataset: dev_github_events
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /root/github-data-pipeline/sa-project-batch.json
+      location: asia-southeast1
+      method: service-account
+      priority: interactive
+      project: pacific-decoder-382709
+      threads: 1
+    prod:
+      type: bigquery
+      dataset: prod_github_events
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /root/github-data-pipeline/sa-project-batch.json
+      location: asia-southeast1
+      method: service-account
+      priority: interactive
+      project: pacific-decoder-382709
+      threads: 1
+  target: dev
